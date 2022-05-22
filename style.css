@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  font-size: 62.5%;
+  --primary-bg-color: #2F2F33;
+  --text-color: #E1E1E6;
+  --main-hue: 194;
+  --primary-cointrast-color: hsl(var(--main-hue), 72%, 13%);
+  --second-contrast-color: hsl(var(--main-hue), 64%, 6%);
+  --third-contrast-color: hsl(calc(var(--main-hue) - 3), 65%, 7%);
+  --button-color: hsl(calc(var(--main-hue) + 1), 91%, 25%);
+  --button-remove: #F75A68;
+
+}
+
+.sr-only {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  padding: 11rem 16rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+#app {
+  max-width: 112rem;
+  margin: 0 auto;
+  gap: 8.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .search {
+  max-width: 64rem;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+header .search input {
+  max-width: 41rem;
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+  border-radius: 4px;
+  background-color: var(--third-contrast-color);
+  color: var(--text-color);
+}
+
+header .search button {
+  background-color: var(--button-color);
+  display: flex;
+  height: 100%;
+  padding: 0 3.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+header .search button:hover {
+  background-color: white;
+  color: var(--button-color);
+}
+
+header .search button:hover .start path {
+  fill: var(--button-color);
+}
+
+/* tabela »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
+/* #table {
+  overflow: auto;
+  width: 100%;
+  height: 30rem;
+  border: solid 1px;
+  position: relative;
+} */
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+  max-width: 110rem;
+  table-layout: fixed;
+}
+
+table * {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+/* Thead »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
+table thead {
+  background-color: var(--primary-cointrast-color);
+  color: var(--text-color);
+  height: 6.4rem;
+}
+
+table thead tr th {
+  padding-left: 4rem;
+
+}
+/* table thead tr{
+  display: block;
+}
+table th, table td{
+  padding: 5px;
+  text-align: left;
+  width: 30%;
+}
+table tbody {
+  display:block;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 60rem;
+} */
+
+table tr {
+  background-color: var(--primary-cointrast-color);
+  max-height: 10rem;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: var(--second-contrast-color);
+}
+
+table tbody tr td {
+  padding: 24px 24px 24px 40px;
+}
+/* user github »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+td.user img {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  border-radius: 5rem;
+  padding: 0;
+}
+
+td .remove {
+  background-color: transparent;
+  color: var(--button-remove);
+  cursor: pointer;
+}
+
+td .remove:hover {
+  color: red;
+
+}
+
+/* @media(max-width:900px){
+  body{
+    padding: 0;;
+  };
+  header .search input {
+     width: 21rem;
+  }
+  table * {
+    font-size: 1.4rem;
+ 
+  }
+  table thead tr th {
+    padding: 0;
+  
+  }
+  table thead tr{
+    display:block;
+  }
+ table thead{
+   width: 100%;
+ }
+
+  table thead tr th, table td{
+    padding: 5px;
+    text-align: left;
+    width: 20%;
+  }
+  table tbody {
+    display:block;
+    width: 100%;
+    overflow: hidden;
+    max-height: 60rem;
+  }
+  /* #table {
+    overflow-x: auto;
+    width: 100%;
+    height: 30rem;
+  } 
+} */
