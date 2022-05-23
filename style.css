@@ -275,7 +275,12 @@ tbody {
     padding: .4rem;
     flex-direction: column;
 
-  }  
+  }td,th{
+    max-width: 200px;
+    padding-top: 1rem;
+  }td.user{
+    align-items: flex-start;
+  }
   
 }
 @media (max-width:600px){
@@ -290,11 +295,21 @@ tbody {
     gap: 1rem;
   }
 }
-@media (max-width:450px){
+/* @media(max-width:450px) {
+  td,th{
+    max-width: 100px;
+    padding-top: 1rem;
+  }td.user {
+   width: 70px;
+  }
+} */
+@media (max-width:380px){
   td,th{
     max-width: 90px;
     padding-top: 1rem;
   }td.user {
    width: 70px;
+  }tbody tr td{
+    text-align: center;
   }
 }
