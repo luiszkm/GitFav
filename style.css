@@ -12,6 +12,7 @@
   font-size: 62.5%;
   --primary-bg-color: #2F2F33;
   --text-color: #E1E1E6;
+  --second-text-color: hsla(189, 4%, 32%, 1);
   --main-hue: 194;
   --primary-cointrast-color: hsl(var(--main-hue), 72%, 13%);
   --second-contrast-color: hsl(var(--main-hue), 64%, 6%);
@@ -46,6 +47,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hide {
+  display: none;
 }
 
 header {
@@ -101,20 +106,19 @@ header .search button:hover .start path {
 }
 
 /* tabela »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
-/* #table {
+#table {
   overflow: auto;
   width: 100%;
-  height: 30rem;
-  border: solid 1px;
-  position: relative;
-} */
+  border-radius: 1.2rem;
+}
 
 table {
   border-collapse: collapse;
   text-align: left;
   width: 100%;
-  max-width: 110rem;
+  max-width: 100rem;
   table-layout: fixed;
+
 }
 
 table * {
@@ -130,26 +134,35 @@ table thead {
   background-color: var(--primary-cointrast-color);
   color: var(--text-color);
   height: 6.4rem;
+
 }
 
 table thead tr th {
   padding-left: 4rem;
 
 }
-/* table thead tr{
-  display: block;
+
+table thead tr th:first-child {
+  border-radius: 1.2rem 0 0 0;
 }
-table th, table td{
-  padding: 5px;
-  text-align: left;
-  width: 30%;
+
+table thead tr th:last-child {
+  border-radius: 0 1.2rem 0 0;
 }
-table tbody {
-  display:block;
-  width: 100%;
-  overflow-y: auto;
-  max-height: 60rem;
-} */
+
+table tbody tr:last-child td.user:first-child {
+  border-radius: 0 0 0 1.2rem;
+
+}
+
+table tbody tr:last-child td:last-child {
+  border-radius: 0 0 1.2rem 0;
+}
+
+table tbody tr:last-child {
+  border-radius: 1.2rem;
+
+}
 
 table tr {
   background-color: var(--primary-cointrast-color);
@@ -163,6 +176,7 @@ table tbody tr:nth-child(odd) {
 table tbody tr td {
   padding: 24px 24px 24px 40px;
 }
+
 /* user github »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
 td.user {
   display: flex;
@@ -189,42 +203,98 @@ td .remove:hover {
 
 }
 
-/* @media(max-width:900px){
-  body{
-    padding: 0;;
-  };
-  header .search input {
-     width: 21rem;
+.contet-empty {
+  width: 100%;
+  max-width: 100rem;
+  height: 64rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  border: 3px solid var(--primary-cointrast-color);
+  border-radius: 0 0 1.2rem 1.2rem;
+}
+
+.contet-empty h2 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 2.5rem;
+  color: var(--second-text-color);
+
+}
+/* tested e overflow da table »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
+
+ td,th{
+  width: 300px;
+  padding-top: 1.5rem;
+}
+thead>tr {
+  position: relative;
+  display: block;
+}
+tbody {
+  display: block;
+  max-height: 62rem;
+  overflow: auto;
+}
+
+@media(max-width:900px) {
+  body {
+    padding: 6rem 2rem;
   }
+
+  td.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   table * {
     font-size: 1.4rem;
- 
-  }
-  table thead tr th {
-    padding: 0;
-  
-  }
-  table thead tr{
-    display:block;
-  }
- table thead{
-   width: 100%;
- }
 
-  table thead tr th, table td{
-    padding: 5px;
-    text-align: left;
-    width: 20%;
   }
-  table tbody {
-    display:block;
-    width: 100%;
-    overflow: hidden;
-    max-height: 60rem;
+
+  table tbody tr td {
+    padding: 1rem;
   }
-  /* #table {
-    overflow-x: auto;
-    width: 100%;
-    height: 30rem;
-  } 
-} */
+
+  table thead tr th {
+    padding-left: 1rem;
+
+  }
+
+  header {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  header .search button {
+    width: 8rem;
+    padding: .4rem;
+    flex-direction: column;
+
+  }  
+  
+}
+@media (max-width:600px){
+  td,th{
+    width: 150px;
+    padding-top: 1rem;
+  } td.user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:  0 0 0 1rem ;
+    gap: 1rem;
+  }
+}
+@media (max-width:450px){
+  td,th{
+    max-width: 90px;
+    padding-top: 1rem;
+  }td.user {
+   width: 70px;
+  }
+}

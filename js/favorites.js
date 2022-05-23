@@ -54,6 +54,8 @@ export class FavoritesView extends Favorites {
       const { value } = this.root.querySelector('.search input')
       this.add(value)
       this.cleanInput()
+      let container =document.querySelector('.contet-empty')
+      container.classList.add('sr-only')
     }
   }
   upDate() {
@@ -114,4 +116,5 @@ export class FavoritesView extends Favorites {
   cleanInput() {
     this.root.querySelector('.search input').value = ''
   }
+
 }
