@@ -246,13 +246,6 @@ tbody {
     padding: 6rem 2rem;
   }
 
-  td.user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
   table * {
     font-size: 1.4rem;
 
@@ -293,7 +286,7 @@ tbody {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding:  0 0 0 1rem ;
+    padding:  1rem 0 0 1rem ;
     gap: 1rem;
   }
 }
