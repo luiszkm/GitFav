@@ -4,12 +4,17 @@ export class Favorites {
   constructor(root) {
     this.root = document.querySelector(root)
     this.load()
+    
   }
   load() {
     this.entries = JSON.parse(localStorage.getItem('@github-favorites')) || []
+    
   }
   save() {
     localStorage.setItem('@github-favorites', JSON.stringify(this.entries))
+    if(this.entries.length == 0){
+      this.removeContainer()
+    }
   }
   async add(username) {
     try {
@@ -36,6 +41,7 @@ export class Favorites {
     this.entries = filteredEntries
     this.upDate()
     this.save()
+
   }
 }
 
@@ -47,6 +53,7 @@ export class FavoritesView extends Favorites {
     this.upDate()
     this.onAdd()
     this.onFocus()
+ 
   }
   onAdd() {
     const addButton = this.root.querySelector('.search button')
@@ -54,8 +61,7 @@ export class FavoritesView extends Favorites {
       const { value } = this.root.querySelector('.search input')
       this.add(value)
       this.cleanInput()
-      let container =document.querySelector('.contet-empty')
-      container.classList.add('sr-only')
+      this.addContainer()
     }
   }
   upDate() {
@@ -84,8 +90,7 @@ export class FavoritesView extends Favorites {
   }
   createRow() {
     const tr = document.createElement('tr')
-
-
+   
     tr.innerHTML = `
     <td class="user">
       <img src="" alt="imagem do usuario">
@@ -116,5 +121,12 @@ export class FavoritesView extends Favorites {
   cleanInput() {
     this.root.querySelector('.search input').value = ''
   }
-
+  addContainer(){
+    let container =document.querySelector('.contet-empty')
+      container.classList.add('sr-only')
+  }
+  removeContainer(){
+    let container =document.querySelector('.contet-empty')
+    container.classList.remove('sr-only')
+  }
 }
