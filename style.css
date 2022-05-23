@@ -214,12 +214,14 @@ td .remove:hover {
   gap: 6rem;
   border: 3px solid var(--primary-cointrast-color);
   border-radius: 0 0 1.2rem 1.2rem;
+  padding: 1rem;
+  
 }
 
 .contet-empty h2 {
   font-weight: 700;
   font-size: 4rem;
-  line-height: 2.5rem;
+  line-height: 3.9rem;
   color: var(--second-text-color);
 
 }
@@ -295,14 +297,6 @@ tbody {
     gap: 1rem;
   }
 }
-/* @media(max-width:450px) {
-  td,th{
-    max-width: 100px;
-    padding-top: 1rem;
-  }td.user {
-   width: 70px;
-  }
-} */
 @media (max-width:380px){
   td,th{
     max-width: 90px;
