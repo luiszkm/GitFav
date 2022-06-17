@@ -8,6 +8,9 @@ export class Favorites {
   }
   load() {
     this.entries = JSON.parse(localStorage.getItem('@github-favorites')) || []
+     if(this.entries.length > 0){
+      this.addContainer()
+    }
     
   }
   save() {
