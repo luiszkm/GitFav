@@ -4,18 +4,19 @@ export class Favorites {
   constructor(root) {
     this.root = document.querySelector(root)
     this.load()
-    
+    this.filter()
+
   }
   load() {
     this.entries = JSON.parse(localStorage.getItem('@github-favorites')) || []
-     if(this.entries.length > 0){
+    if (this.entries.length > 0) {
       this.addContainer()
     }
-    
+
   }
   save() {
     localStorage.setItem('@github-favorites', JSON.stringify(this.entries))
-    if(this.entries.length == 0){
+    if (this.entries.length == 0) {
       this.removeContainer()
     }
   }
@@ -46,6 +47,43 @@ export class Favorites {
     this.save()
 
   }
+  filter() {
+    const filterUser = document.querySelector('#filter')
+
+    filterUser.addEventListener('input', function () {
+      console.log(this.value);
+      let userTable = document.querySelectorAll('.userTr')
+
+      if (this.value.length > 0) {
+        
+        userTable.forEach(tr => {
+          let userName = tr.querySelector('.userName').textContent
+          let userGit = tr.querySelector('.userGit').textContent
+
+          console.log(userGit);
+
+          let expression = new RegExp(this.value, "i")
+
+          if (!expression.test(userName) && !expression.test(userGit)) {
+            tr.classList.add("invisible")
+          } else {
+            tr.classList.remove("invisible")
+          }
+        })
+      }else {
+        userTable.forEach(
+          tr => {
+            let userName = tr.querySelector('.userName').textContent
+            let userGit = tr.querySelector('.userGit').textContent
+
+            tr.classList.remove("invisible")
+            console.log(userName);
+          }
+        )
+      }
+    })
+
+  }
 }
 
 export class FavoritesView extends Favorites {
@@ -56,7 +94,7 @@ export class FavoritesView extends Favorites {
     this.upDate()
     this.onAdd()
     this.onFocus()
- 
+
   }
   onAdd() {
     const addButton = this.root.querySelector('.search button')
@@ -93,13 +131,13 @@ export class FavoritesView extends Favorites {
   }
   createRow() {
     const tr = document.createElement('tr')
-   
+    tr.classList.add('userTr')
     tr.innerHTML = `
     <td class="user">
       <img src="" alt="imagem do usuario">
       <a href="" target="_blank">
-        <p>Name</p>
-        <span>User</span>
+        <p class="userName">Name</p>
+        <span class= "userGit">User</span>
       </a>
     </td>
     <td class="repositories"></td>
@@ -124,12 +162,12 @@ export class FavoritesView extends Favorites {
   cleanInput() {
     this.root.querySelector('.search input').value = ''
   }
-  addContainer(){
-    let container =document.querySelector('.contet-empty')
-      container.classList.add('sr-only')
+  addContainer() {
+    let container = document.querySelector('.contet-empty')
+    container.classList.add('sr-only')
   }
-  removeContainer(){
-    let container =document.querySelector('.contet-empty')
+  removeContainer() {
+    let container = document.querySelector('.contet-empty')
     container.classList.remove('sr-only')
   }
 }

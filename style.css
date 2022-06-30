@@ -176,7 +176,30 @@ table tbody tr:nth-child(odd) {
 table tbody tr td {
   padding: 24px 24px 24px 40px;
 }
+/*filter user »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»*/
+#filter-content label{
+  width: 100%; 
+  color:  var(--second-text-color);
+  font-size: 1.6rem;
+}
 
+#filter{
+  width: 100%; 
+  height:3rem;
+  padding-left: 1rem;
+  border-radius: 4px;
+  background-color: var(--third-contrast-color);
+  color: var(--text-color);
+  outline: none;
+}
+.fadeOut{
+  opacity: 0;
+  transition: 0.5s;
+}
+.invisible{
+  display: none;
+
+}
 /* user github »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» */
 td.user {
   display: flex;
